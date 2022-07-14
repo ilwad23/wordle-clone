@@ -14,7 +14,6 @@ function useWordle() {
     },
     dispatch,
   ] = useStateValue();
-  console.log(actualWord);
   function submitGuess(e) {
     
     if (pressEnter === "Enter"|| e.key=='Enter') {

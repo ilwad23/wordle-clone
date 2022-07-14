@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.css";
 import { useStateValue } from "../../states/StateProvider";
 import RowOfKeys from "./rowOfKeys";
 function KeyPad() {
-  const dispatch = useStateValue()[1];
+  const [{colorsForKey},dispatch] = useStateValue();
   const rows = [
     ["QWERTYUIOP", false],
     ["ASDFGHJKL", false],
@@ -19,6 +19,7 @@ function KeyPad() {
           styles={styles}
           dispatch={dispatch}
           bottom={b}
+          colorsForKey={colorsForKey}
         />
       ))}
     </div>

@@ -34,3 +34,6 @@ export const formattedWords = words.map((word) => word.toUpperCase());
 export const guessingWords = formattedWords.filter(
   (word, i) => i !== randomNum
 );
+const alpha = "abcdefghijklmnopqrstuvwxyz".split("");
+const colorsForKeyArr = alpha.map((x) => [x.toUpperCase(), "lightgray"]);
+export const ColorsForKey = Object.fromEntries(colorsForKeyArr);

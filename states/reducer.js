@@ -1,5 +1,5 @@
-import { ActualWord } from "../components/words";
-import { changeGuessWord, checkGuessWord } from "./functions";
+import { ActualWord, ColorsForKey } from "../components/words";
+import { changeGuessWord, checkGuessWord, colorKeyPad} from "./functions";
 
 export const initialState = {
   actualWord: ActualWord.toUpperCase(),
@@ -10,6 +10,7 @@ export const initialState = {
   colorsForLetters: [],
   isNotAWord: null,
   pressEnter: "",
+  colorsForKey: ColorsForKey,
 };
 
 const reducer = (state, action) => {
@@ -19,6 +20,7 @@ const reducer = (state, action) => {
     guesses,
     colorsForLetters,
     actualWord,
+    colorsForKey,
   } = state;
   const { type, e } = action;
   switch (type) {
@@ -60,6 +62,11 @@ const reducer = (state, action) => {
           ...colorsForLetters,
           checkGuessWord(actualWord, currentGuess)[0],
         ],
+        colorsForKey: colorKeyPad(
+          checkGuessWord,colorsForKey,
+          actualWord,
+          currentGuess
+        ),
         numOfGuesses: numOfGuesses + 1,
       };
 
