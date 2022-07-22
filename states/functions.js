@@ -1,9 +1,12 @@
-export const changeGuessWord = (letter, currentGuess) => {
-  let newGuessWord =
+export const changeGuessWord = (letter, currentGuess, isCorrect) => {
+  if (!isCorrect) {
+    let newGuessWord =
     letter === "Backspace"
-      ? currentGuess.slice(0, currentGuess.length - 1)
-      : addLetters(letter, currentGuess);
-  return newGuessWord;
+    ? currentGuess.slice(0, currentGuess.length - 1)
+    : addLetters(letter, currentGuess);
+    return newGuessWord;
+  }
+  return currentGuess
 };
 
 export const addLetters = (letter, currentGuess) => {
@@ -17,6 +20,7 @@ export const addLetters = (letter, currentGuess) => {
   }
   return word;
 };
+
 export const checkGuessWord = (actualWord, currentGuess) => {
   let colorsForLetters = [...Array(5).fill("grey")];
   let a = actualWord;
@@ -47,6 +51,13 @@ export const checkGuessWord = (actualWord, currentGuess) => {
   return [colorsForLetters, false];
 };
 
+export const colorsForKey =() => {
+  const alpha = "abcdefghijklmnopqrstuvwxyz".split("");
+  const arr = alpha.map((l) => [l.toUpperCase(), "lightgray"])
+  const obj = Object.fromEntries(arr);
+  return obj
+}
+
 export const colorKeyPad = (
   checkGuessWord,
   colorsForKey,
@@ -59,9 +70,7 @@ export const colorKeyPad = (
     const l = currentGuess.split("")[i];
     if (colorsForKey[l] != "green") {
       colorsForKey[l] = colors[i];
-    } 
+    }
   }
   return colorsForKey;
 };
-
-

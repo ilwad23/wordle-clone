@@ -1,16 +1,21 @@
-import { ActualWord, ColorsForKey } from "../components/words";
-import { changeGuessWord, checkGuessWord, colorKeyPad} from "./functions";
+import { ActualWord } from "../components/words";
+import {
+  colorsForKey,
+  changeGuessWord,
+  checkGuessWord,
+  colorKeyPad,
+} from "./functions";
 
 export const initialState = {
   actualWord: ActualWord.toUpperCase(),
   currentGuess: "",
-  isCorrect: false,
   guesses: [...Array(6)],
   numOfGuesses: 1,
   colorsForLetters: [],
   isNotAWord: null,
   pressEnter: "",
-  colorsForKey: ColorsForKey,
+  colorsForKey: colorsForKey(),
+  isCorrect: false,
 };
 
 const reducer = (state, action) => {
@@ -21,13 +26,16 @@ const reducer = (state, action) => {
     colorsForLetters,
     actualWord,
     colorsForKey,
+    isCorrect,
   } = state;
-  const { type, e } = action;
+  // console.log(JSON.stringify(state));
+  // console.log(state);
+  const { type, e, words } = action;
   switch (type) {
     case "DEPRESSED-ENTER":
       return {
         ...state,
-        pressEnter: '',
+        pressEnter: "",
       };
     case "PRESSED-ENTER":
       return {
@@ -38,7 +46,7 @@ const reducer = (state, action) => {
     case "CHANGE-GUESS-WORD":
       return {
         ...state,
-        currentGuess: changeGuessWord(e.key, currentGuess),
+        currentGuess: changeGuessWord(e.key, currentGuess,isCorrect),
       };
 
     case "SET-WRONG-GUESS-WORD":
@@ -46,12 +54,12 @@ const reducer = (state, action) => {
         ...state,
         isNotAWord: numOfGuesses - 1,
       };
-      case "SHAKE-WRONG-GUESS-WORD":
-        return {
-          ...state,
-          isNotAWord: null,
-        };
-      case "SUBMIT-GUESS-WORD":
+    case "SHAKE-WRONG-GUESS-WORD":
+      return {
+        ...state,
+        isNotAWord: null,
+      };
+    case "SUBMIT-GUESS-WORD":
       guesses[numOfGuesses - 1] = currentGuess;
       return {
         ...state,
@@ -63,11 +71,23 @@ const reducer = (state, action) => {
           checkGuessWord(actualWord, currentGuess)[0],
         ],
         colorsForKey: colorKeyPad(
-          checkGuessWord,colorsForKey,
+          checkGuessWord,
+          colorsForKey,
           actualWord,
           currentGuess
         ),
         numOfGuesses: numOfGuesses + 1,
+      };
+
+    case "SET-VARIABLES":
+      return {
+        ...state,
+        actualWord: words?.actualWord,
+        guesses: words?.guesses,
+        colorsForLetters: words?.colorsForLetters,
+        colorsForKey: words?.colorsForKey,
+        numOfGuesses: words?.numOfGuesses,
+        isCorrect: words?.isCorrect,
       };
 
     default:

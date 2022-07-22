@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/Grid.module.css";
 function Grid({ currentGuess, colorsForLetters, guesses, numOfGuesses, isNotAWord }) {
+ 
   return (
     <div className={styles.grid}>
       {guesses.map((guess, i) => (
