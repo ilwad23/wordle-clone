@@ -1,5 +1,5 @@
 import React from "react";
-
+import { BackspaceIcon } from "@heroicons/react/outline";
 function RowOfKeys({ letters, styles, dispatch, bottom, colorsForKey }) {
   return (
     <div className={styles.row}>
@@ -30,7 +30,7 @@ function RowOfKeys({ letters, styles, dispatch, bottom, colorsForKey }) {
             dispatch({ type: "CHANGE-GUESS-WORD", e: { key: "Backspace" } })
           }
         >
-          Del
+          <BackspaceIcon style={{width:'32px',height:'32px'}}/>
         </p>
       )}
     </div>
