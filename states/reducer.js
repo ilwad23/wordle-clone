@@ -7,9 +7,10 @@ import {
 } from "./functions";
 
 export const initialState = {
-  actualWord: ActualWord.toUpperCase(),
+  actualWords:[],
   currentGuess: "",
   guesses: [...Array(6)],
+  actualWord: ActualWord,
   numOfGuesses: 1,
   colorsForLetters: [],
   isNotAWord: null,

@@ -5,6 +5,7 @@ import States from "./States";
 function useWordle() {
   const [
     {
+      actualWords,
       actualWord,
       currentGuess,
       colorsForLetters,
@@ -19,6 +20,7 @@ function useWordle() {
   ] = useStateValue();
   States(
     dispatch,
+    actualWords,
     actualWord,
     guesses,
     colorsForLetters,
@@ -45,7 +47,7 @@ function useWordle() {
     if (pressEnter === "Enter" || e.key == "Enter") {
       if (
         guesses.includes(currentGuess) ||
-        !formattedWords.includes(currentGuess)
+        !formattedWords(actualWords).includes(currentGuess)
       ) {
         dispatch({ type: "SET-WRONG-GUESS-WORD" });
         return;

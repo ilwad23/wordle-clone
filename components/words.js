@@ -211,7 +211,11 @@ export const words = [
   "World",
   "Youth",
 ];
-export const randomNum = Math.floor(Math.random() * words.length);
-export const ActualWord = words[randomNum];
-export const formattedWords = words.map((word) => word.toUpperCase());
-export const guessingWords = formattedWords.filter((_, i) => i !== randomNum);
+export const actualWords = (e = []) => words.filter((b) => !e.includes(b));
+const randomNum = Math.floor(Math.random() * actualWords().length);
+
+export const ActualWord = (e = []) => actualWords(e)[randomNum];
+export const formattedWords = (e = []) =>
+  actualWords(e).map((word) => word.toUpperCase());
+
+console.log(actualWords());
