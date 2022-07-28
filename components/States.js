@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { words } from "./words";
 
 export default function States(
   dispatch,
@@ -16,7 +15,7 @@ export default function States(
     if (new Date().getDate() != ls.getItem("date") || !ls.getItem("info")) {
       let words = actualWords;
       let jInfo = JSON.parse(ls.getItem("info"));
-      if (jInfo !== null) a = jInfo.actualWords;
+      if (jInfo !== null) words = jInfo.actualWords;
       let word = actualWord(words).toUpperCase();
       let info = {
         actualWords: [word, ...words],
