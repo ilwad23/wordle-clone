@@ -1,4 +1,4 @@
-import { ActualWord } from "../components/words";
+import { ActualWord } from "../utils/words";
 import {
   colorsForKey,
   changeGuessWord,

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import useWordle from "../components/useWordle";
+import useWordle from "../utils/useWordle";
 import WordleGrid from "../components/WordleGrid";
 import KeyPad from "../components/KeyPad/";
 
