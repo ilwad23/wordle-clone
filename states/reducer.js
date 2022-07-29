@@ -29,8 +29,7 @@ const reducer = (state, action) => {
     colorsForKey,
     isCorrect,
   } = state;
-  // console.log(JSON.stringify(state));
-  // console.log(state);
+
   const { type, e, words } = action;
   switch (type) {
     case "DEPRESSED-ENTER":
