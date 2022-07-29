@@ -211,11 +211,13 @@ export const words = [
   "World",
   "Youth",
 ];
-export const actualWords = (e = []) => words.filter((b) => !e.includes(b));
-const randomNum = Math.floor(Math.random() * actualWords().length);
+const formattedWords = words.map((word) => word.toUpperCase());
 
-export const ActualWord = (e = []) => actualWords(e)[randomNum];
-export const formattedWords = (e = []) =>
-  actualWords(e).map((word) => word.toUpperCase());
+export const ActualWords = (pervWords = []) =>
+  formattedWords.filter((b) => !pervWords.includes(b));
 
-console.log(actualWords());
+const randomNum = (pervWords) =>
+  Math.floor(Math.random() * ActualWords(pervWords).length);
+
+export const ActualWord = (pervWords = []) =>
+  ActualWords(pervWords)[randomNum(pervWords)];

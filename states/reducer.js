@@ -7,7 +7,7 @@ import {
 } from "./functions";
 
 export const initialState = {
-  actualWords:[],
+  pervWords: [],
   currentGuess: "",
   guesses: [...Array(6)],
   actualWord: ActualWord,
@@ -47,7 +47,7 @@ const reducer = (state, action) => {
     case "CHANGE-GUESS-WORD":
       return {
         ...state,
-        currentGuess: changeGuessWord(e.key, currentGuess,isCorrect),
+        currentGuess: changeGuessWord(e.key, currentGuess, isCorrect),
       };
 
     case "SET-WRONG-GUESS-WORD":
@@ -83,6 +83,7 @@ const reducer = (state, action) => {
     case "SET-VARIABLES":
       return {
         ...state,
+        pervWords: words?.pervWords,
         actualWord: words?.actualWord,
         guesses: words?.guesses,
         colorsForLetters: words?.colorsForLetters,

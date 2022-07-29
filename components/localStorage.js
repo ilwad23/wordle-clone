@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 export default function States(
   dispatch,
-  actualWords,
+  pervWords,
   actualWord,
   guesses,
   colorsForLetters,
@@ -13,12 +13,13 @@ export default function States(
   useEffect(() => {
     const ls = localStorage;
     if (new Date().getDate() != ls.getItem("date") || !ls.getItem("info")) {
-      let words = actualWords;
+      let words = pervWords;
       let jInfo = JSON.parse(ls.getItem("info"));
-      if (jInfo !== null) words = jInfo.actualWords;
+      if (jInfo !== null) words = jInfo.pervWords;
       let word = actualWord(words).toUpperCase();
+
       let info = {
-        actualWords: [word, ...words],
+        pervWords: [word, ...words],
         actualWord: word,
         isCorrect: isCorrect,
         guesses: guesses,
@@ -37,7 +38,7 @@ export default function States(
     } else {
       const jp = JSON.parse(ls.getItem("info"));
       let info = {
-        actualWords: jp.actualWords,
+        pervWords: jp.pervWords,
         actualWord: jp.actualWord,
         isCorrect: jp.isCorrect,
         guesses: jp.guesses,
@@ -46,10 +47,11 @@ export default function States(
         colorsForKey: jp.colorsForKey,
       };
       ls.setItem("info", JSON.stringify(info));
+    
       dispatch({
         type: "SET-VARIABLES",
         words: { ...info },
       });
     }
-  }, [guesses]);
+  }, []);
 }
