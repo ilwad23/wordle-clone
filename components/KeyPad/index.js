@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/KeyPad.module.css";
 import { useStateValue } from "../../states/StateProvider";
 import RowOfKeys from "./rowOfKeys";
 function KeyPad() {
