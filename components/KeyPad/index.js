@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/KeyPad.module.css";
 import { useStateValue } from "../../states/StateProvider";
-import RowOfKeys from "./rowOfKeys";
+import Row from "./Row";
 function KeyPad() {
   const [{colorsForKey},dispatch] = useStateValue();
   const rows = [
@@ -13,7 +13,7 @@ function KeyPad() {
   return (
     <div className={styles.grid}>
       {rows.map(([l, b], i) => (
-        <RowOfKeys
+        <Row
           key={l}
           letters={l}
           styles={styles}
