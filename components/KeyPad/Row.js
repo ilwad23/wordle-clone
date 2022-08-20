@@ -1,7 +1,7 @@
 import React from "react";
 import { BackspaceIcon } from "@heroicons/react/outline";
 
-function RowOfKeys({ letters, styles, dispatch, bottom, colorsForKey }) {
+function Row({ letters, styles, dispatch, bottom, colorsForKey }) {
   return (
     <div className={styles.row}>
       {bottom && (
@@ -37,4 +37,4 @@ function RowOfKeys({ letters, styles, dispatch, bottom, colorsForKey }) {
   );
 }
 
-export default RowOfKeys;
+export default Row;
