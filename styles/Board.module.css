@@ -16,7 +16,11 @@
   font-size: 2rem;
   width: 60px;
   height: 60px;
+<<<<<<< HEAD:styles/Board.module.css
   border: 2px lavender solid;
+=======
+  border: 2px rgba(195, 195, 195, 0.73) solid;
+>>>>>>> d6a05f47a17b8ec655056bb31cc23bdba34bee53:styles/Grid.module.css
   display: flex;
   justify-content: center;
   align-items: center;
