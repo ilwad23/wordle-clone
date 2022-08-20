@@ -3,21 +3,19 @@ import { useStateValue } from "../states/StateProvider";
 import { useEffect } from "react";
 import States from "./localStorage";
 function useWordle() {
-  const [
-    {
-      pervWords,
-      actualWord,
-      currentGuess,
-      colorsForLetters,
-      guesses,
-      numOfGuesses,
-      colorsForKey,
-      isNotAWord,
-      isCorrect,
-      pressEnter,
-    },
-    dispatch,
-  ] = useStateValue();
+  const [states, dispatch] = useStateValue();
+  const {
+    pervWords,
+    actualWord,
+    currentGuess,
+    colorsForLetters,
+    guesses,
+    numOfGuesses,
+    colorsForKey,
+    isNotAWord,
+    isCorrect,
+    pressEnter,
+  } = states;
   States(
     dispatch,
     pervWords,
